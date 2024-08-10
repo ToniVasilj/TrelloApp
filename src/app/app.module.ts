@@ -5,15 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoardListComponent } from './board-list/board-list.component';
 import { provideHttpClient } from '@angular/common/http';
+import { CreateBoardComponent } from './create-board/create-board.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateBoardNameComponent } from './update-board-name/update-board-name.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoardListComponent
+    BoardListComponent,
+    CreateBoardComponent,
+    UpdateBoardNameComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

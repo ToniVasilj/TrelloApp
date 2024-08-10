@@ -1,16 +1,20 @@
-<h2>List of boards</h2>
+<div class="col-md-6 offset-md-3">
 <table class="table table-striped">
   <thead>
     <tr>
-      <th> Id </th>
       <th> Board </th>
+      <th> Actions </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor = "let board of boards">
-        <td> {{ board.id }}</td>
         <td> {{ board.name }}</td>
+        <td>
+          <button (click)="updateBoardName(board.id)" class=" btn btn-info"> Update Name </button>
+          <button (click)="deleteBoard(board.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+        </td>
     </tr>
   </tbody>
 </table>
+</div>
 

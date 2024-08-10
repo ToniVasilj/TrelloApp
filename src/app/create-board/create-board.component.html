@@ -1,0 +1,13 @@
+<div class="col-md-6 offset-md-3">
+<h3> Create Board</h3>
+<form (ngSubmit) = "onSubmit()">
+
+  <div class="form-group">
+    <label>Board Name</label>
+    <input type="text" class="form-control" id="name"
+      [(ngModel)] = "board.name" name="name">
+  </div>
+
+  <button class="btn btn-success" type="submit">Submit</button>
+</form>
+</div>
