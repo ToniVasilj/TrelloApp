@@ -1,4 +1,4 @@
-import { Board, BoardData } from "./board";
+import { Board, BoardData, iBoard } from "./board";
 
 export interface CustomResponse {
   timeStamp: Date;
@@ -7,5 +7,5 @@ export interface CustomResponse {
   reason: string;
   message: string;
   developerMessaege: string;
-  data: { boards?: Board[], board?: Board, boardData?: BoardData }
+  data: { boards?: Board[], board?: Board, iBoard?: iBoard }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BoardService } from '../service/board.service';
-import { Board, BoardData } from '../interface/board';
+import { Board } from '../interface/board';
 
 @Component({
   selector: 'app-board-details',
@@ -10,13 +10,23 @@ import { Board, BoardData } from '../interface/board';
 })
 export class BoardDetailsComponent implements OnInit {
   id: number
-  boardData: BoardData;
+  board: Board;
 
   constructor(private boardService: BoardService, 
     private route: ActivatedRoute) {}
 
     ngOnInit(): void {
       this.id = this.route.snapshot.params['id'];
-      this.boardData = this.boardService.getBoardData(this.id);
+      this.boardService.getBoardById(this.id).subscribe({
+        next: (data) => {
+          this.board = data.data.board;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+          console.log('Board data fetch completed');
+        }
+      });
     }
 }

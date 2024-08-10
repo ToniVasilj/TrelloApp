@@ -22,6 +22,7 @@ export interface BoardData {
 export class Board {
   id: number;
   name: string;
+  blists: BList[];
 }
 
 
