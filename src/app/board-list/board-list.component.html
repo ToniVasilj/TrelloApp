@@ -1,1 +1,16 @@
-<p>board-list works!</p>
+<h2>List of boards</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> Id </th>
+      <th> Board </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let board of boards">
+        <td> {{ board.id }}</td>
+        <td> {{ board.name }}</td>
+    </tr>
+  </tbody>
+</table>
+
