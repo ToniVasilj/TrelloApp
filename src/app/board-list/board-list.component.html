@@ -12,9 +12,15 @@
         <td>
           <button (click)="updateBoardName(board.id)" class=" btn btn-info"> Update Name </button>
           <button (click)="deleteBoard(board.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+          <button (click)="boardDetails(board.id)" class="btn btn-info" style="margin-left: 10px"> View </button>
         </td>
     </tr>
   </tbody>
 </table>
+
+<td>
+  <button (click)="navigateToCreateBoard()" class="btn btn-primary" style="margin-left: 10px"> Create </button>
+</td>
+
 </div>
 

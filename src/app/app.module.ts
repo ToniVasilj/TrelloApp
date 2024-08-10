@@ -8,13 +8,15 @@ import { provideHttpClient } from '@angular/common/http';
 import { CreateBoardComponent } from './create-board/create-board.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateBoardNameComponent } from './update-board-name/update-board-name.component';
+import { BoardDetailsComponent } from './board-details/board-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardListComponent,
     CreateBoardComponent,
-    UpdateBoardNameComponent
+    UpdateBoardNameComponent,
+    BoardDetailsComponent
   ],
   imports: [
     BrowserModule,

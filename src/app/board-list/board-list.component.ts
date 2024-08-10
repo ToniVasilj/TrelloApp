@@ -26,7 +26,11 @@ export class BoardListComponent implements OnInit {
     })
   }
 
-  updateBoardName(id: number){
+  boardDetails(id: number) {
+    this.router.navigate(['board-details', id]);
+  }
+
+  updateBoardName(id: number) {
     this.router.navigate(['update-board-name', id]);
   }
 
@@ -35,5 +39,9 @@ export class BoardListComponent implements OnInit {
       console.log(data.data.board);
       this.getBoards();
     });
+  }
+
+  navigateToCreateBoard() {
+    this.router.navigate(['create-board']);
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomResponse } from '../interface/custom-response';
-import { Board } from '../interface/board';
+import { Board, BoardData } from '../interface/board';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,36 @@ export class BoardService {
 
   deleteBoard(id: number): Observable<CustomResponse> {
     return this.httpClinet.delete<CustomResponse>(`${this.baseUrl}board/delete/${id}`);
+  }
+
+  getBoardData(id: number): BoardData {
+    return {
+      board: {  // Ensure the key is correct
+        id: 1,
+        name: "B1",
+        blists: [
+          {
+            id: 1,
+            name: "BList1",
+            cards: [
+              {
+                id: 1,
+                text: "Card1 txt"
+              },
+              {
+                id: 2,
+                text: "Card2 txt"
+              }
+            ]
+          },
+          {
+            id: 2,
+            name: "BList2",
+            cards: []
+          }
+        ]
+      }
+    };
   }
 
 }

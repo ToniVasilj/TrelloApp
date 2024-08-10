@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { BoardListComponent } from './board-list/board-list.component';
 import { CreateBoardComponent } from './create-board/create-board.component';
 import { UpdateBoardNameComponent } from './update-board-name/update-board-name.component';
+import { BoardDetailsComponent } from './board-details/board-details.component';
 
 const routes: Routes = [
   {path: 'boards', component: BoardListComponent},
   {path: 'create-board', component: CreateBoardComponent},
   {path: 'update-board-name/:id', component: UpdateBoardNameComponent},
+  {path: 'board-details/:id', component: BoardDetailsComponent},
   {path: '', redirectTo: 'boards', pathMatch: 'full'}
 ];
 

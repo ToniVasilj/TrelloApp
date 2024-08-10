@@ -1,0 +1,13 @@
+<p>board-details works!</p>
+
+<div *ngIf="boardData">
+  <h1>{{ boardData.board.name }}</h1>
+  <div *ngFor="let bList of boardData.board.blists">
+    <h2>{{ bList.name }}</h2>
+    <ul>
+      <li *ngFor="let card of bList.cards">
+        {{ card.text }}
+      </li>
+    </ul>
+  </div>
+</div>
