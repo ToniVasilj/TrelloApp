@@ -25,6 +25,7 @@ export class BoardDetailsComponent implements OnInit {
           console.log(error);
         },
         complete: () => {
+          console.log(this.board);
           console.log('Board data fetch completed');
         }
       });

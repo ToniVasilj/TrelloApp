@@ -27,6 +27,7 @@ export class CreateBoardComponent implements OnInit {
       },
       complete: () => {
         console.log('Board creation completed');
+        this.goToBoardList();
       }
     });
   }
@@ -38,7 +39,6 @@ export class CreateBoardComponent implements OnInit {
   onSubmit() {
     console.log(this.board);
     this.saveBoard();
-    this.goToBoardList();
   }
 
 }

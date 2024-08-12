@@ -10,25 +10,25 @@ import { Board} from '../interface/board';
 export class BoardService {
 
   private baseUrl = "http://localhost:8082/";
-  constructor(private httpClinet: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getBoardsList(): Observable<CustomResponse> {
-    return this.httpClinet.get<CustomResponse>(`${this.baseUrl}board/boards/idAndName`);
+    return this.httpClient.get<CustomResponse>(`${this.baseUrl}board/boards/idAndName`);
   }
 
   createBoard(board: Board): Observable<CustomResponse> {
-    return this.httpClinet.post<CustomResponse>(`${this.baseUrl}board/save`, board);
+    return this.httpClient.post<CustomResponse>(`${this.baseUrl}board/save`, board);
   }
 
   getBoardById(id: number): Observable<CustomResponse> {
-    return this.httpClinet.get<CustomResponse>(`${this.baseUrl}board/get/${id}`);
+    return this.httpClient.get<CustomResponse>(`${this.baseUrl}board/get/${id}`);
   }
 
   updateBoardName(board: Board): Observable<CustomResponse> {
-    return this.httpClinet.post<CustomResponse>(`${this.baseUrl}board/updateName`, board);
+    return this.httpClient.post<CustomResponse>(`${this.baseUrl}board/updateName`, board);
   }
 
   deleteBoard(id: number): Observable<CustomResponse> {
-    return this.httpClinet.delete<CustomResponse>(`${this.baseUrl}board/delete/${id}`);
+    return this.httpClient.delete<CustomResponse>(`${this.baseUrl}board/delete/${id}`);
   }
 }

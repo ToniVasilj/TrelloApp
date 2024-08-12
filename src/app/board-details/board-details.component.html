@@ -1,10 +1,29 @@
 <div *ngIf="board">
   <h1>{{ board.name }}</h1>
-  <div *ngFor="let bList of board.blists">
-    <h2>{{ bList.name }}</h2>
-    <ul>
-      <li *ngFor="let card of bList.cards">
-        {{ card.text }}
-      </li>
-    </ul>
+</div>
+
+<td>
+  <button class="btn btn-primary" style="margin-right: 10px"> Create List </button>
+</td>
+
+<div *ngIf="board">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let bList of board.blists">
+      <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2 class="h5">{{ bList.name }}</h2>
+          <button class="btn btn-primary btn-sm">Create Card</button>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let card of bList.cards">
+            {{ card.text }}
+            <div>
+              <button class="btn btn-info btn-sm">Update</button>
+              <button class="btn btn-danger btn-sm" style="margin-left: 10px">Delete</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
