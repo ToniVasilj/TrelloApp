@@ -1,11 +1,11 @@
 <div class="col-md-6 offset-md-3">
-  <h3> Update Board Name</h3>
+  <h3> Update Card</h3>
   <form (ngSubmit) = "onSubmit()">
   
     <div class="form-group">
-      <label>Board Name</label>
+      <label>Card Text</label>
       <input type="text" class="form-control" id="name"
-        [(ngModel)] = "board.name" name="name">
+        [(ngModel)] = "card.text" name="name">
     </div>
   
     <button class="btn btn-success" type="submit">Submit</button>

@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { UpdateBoardNameComponent } from './update-board-name/update-board-name.component';
 import { BoardDetailsComponent } from './board-details/board-details.component';
 import { CreateBListComponent } from './create-b-list/create-b-list.component';
+import { CreateCardComponent } from './create-card/create-card.component';
+import { UpdateCardComponent } from './update-card/update-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CreateBListComponent } from './create-b-list/create-b-list.component';
     CreateBoardComponent,
     UpdateBoardNameComponent,
     BoardDetailsComponent,
-    CreateBListComponent
+    CreateBListComponent,
+    CreateCardComponent,
+    UpdateCardComponent
   ],
   imports: [
     BrowserModule,

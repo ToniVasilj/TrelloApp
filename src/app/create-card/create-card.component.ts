@@ -1,34 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { BList } from '../interface/board';
+import { Card } from '../interface/board';
+import { CardService } from '../service/card.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BListService } from '../service/b-list.service';
 
 @Component({
-  selector: 'app-create-b-list',
-  templateUrl: './create-b-list.component.html',
-  styleUrl: './create-b-list.component.css'
+  selector: 'app-create-card',
+  templateUrl: './create-card.component.html',
+  styleUrl: './create-card.component.css'
 })
-export class CreateBListComponent implements OnInit {
-  bList: BList = new BList();
+export class CreateCardComponent implements OnInit {
+  card: Card = new Card();
   boardId: number;
-
-  constructor(private bListService: BListService,
+  bListId: number;
+  
+  constructor(private cardService: CardService,
     private route: ActivatedRoute,
     private router: Router) {}
 
   ngOnInit(): void {
     this.boardId = this.route.snapshot.params['boardId'];
     console.log("Board id is:", this.boardId);
+    this.bListId = this.route.snapshot.params['bListId'];
+    console.log("BList id is:", this.bListId);
   }
 
   goToBoard() {
     this.router.navigate(['board-details', this.boardId]);
   }
 
-  saveBoard() {
-    this.bListService.createNewBList(this.boardId, this.bList).subscribe({
+  saveCard() {
+    this.cardService.createNewCard(this.boardId, this.bListId, this.card).subscribe({
       next: (data) => {
-        console.log(data.data.bList);
+        console.log(data.data.card);
       },
       error: (error) => {
         console.log(error);
@@ -41,8 +44,7 @@ export class CreateBListComponent implements OnInit {
   }
   
   onSubmit() {
-    this.saveBoard();
-    console.log(this.bList);
+    this.saveCard()
+    console.log(this.card);
   }
-
 }

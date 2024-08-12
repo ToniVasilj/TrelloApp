@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BoardService } from '../service/board.service';
 import { Board } from '../interface/board';
 import { BListService } from '../service/b-list.service';
+import { CardService } from '../service/card.service';
 
 @Component({
   selector: 'app-board-details',
@@ -10,11 +11,12 @@ import { BListService } from '../service/b-list.service';
   styleUrl: './board-details.component.css'
 })
 export class BoardDetailsComponent implements OnInit {
-  id: number
+  id: number;
   board: Board;
 
   constructor(private boardService: BoardService, 
     private bListService: BListService,
+    private cardService: CardService,
     private route: ActivatedRoute,
     private router: Router) {}
 
@@ -48,4 +50,22 @@ export class BoardDetailsComponent implements OnInit {
         this.getBoard();
       });
     }
+
+    createCard(boardId: number, bListId: number) {
+      this.router.navigate(['create-card', boardId, bListId]);
+    }
+
+    updateCard(boardId: number, cardId: number) {
+      console.log("Board id:", boardId);
+      console.log("Card id:", cardId);
+      this.router.navigate(['update-card', boardId, cardId]);
+    }
+
+    deleteCard(id: number) {
+      this.cardService.deleteCard(id).subscribe(data => {
+        console.log(data.data.bList);
+        this.getBoard();
+      });
+    }
+
 }

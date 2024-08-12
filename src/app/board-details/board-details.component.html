@@ -12,15 +12,15 @@
       <div class="card mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h2 class="h5">{{ bList.name }}</h2>
-          <button class="btn btn-primary btn-sm">Create Card</button>
+          <button (click)="createCard(board.id, bList.id)" class="btn btn-primary btn-sm">Create Card</button>
           <button (click)="deleteBList(bList.id)" class="btn btn-danger btn-sm" style="margin-left: 10px">Delete List</button>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let card of bList.cards">
             {{ card.text }}
             <div>
-              <button class="btn btn-info btn-sm">Update</button>
-              <button class="btn btn-danger btn-sm" style="margin-left: 10px">Delete</button>
+              <button (click)="updateCard(board.id, card.id)" class="btn btn-info btn-sm">Update</button>
+              <button (click)="deleteCard(card.id)" class="btn btn-danger btn-sm" style="margin-left: 10px">Delete</button>
             </div>
           </li>
         </ul>
