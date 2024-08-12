@@ -30,7 +30,7 @@ export class BoardListComponent implements OnInit {
     this.router.navigate(['board-details', id]);
   }
 
-  updateBoardName(id: number) {
+  updateBoard(id: number) {
     this.router.navigate(['update-board-name', id]);
   }
 

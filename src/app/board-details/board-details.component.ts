@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BoardService } from '../service/board.service';
 import { Board } from '../interface/board';
+import { BListService } from '../service/b-list.service';
 
 @Component({
   selector: 'app-board-details',
@@ -13,9 +14,15 @@ export class BoardDetailsComponent implements OnInit {
   board: Board;
 
   constructor(private boardService: BoardService, 
-    private route: ActivatedRoute) {}
+    private bListService: BListService,
+    private route: ActivatedRoute,
+    private router: Router) {}
 
     ngOnInit(): void {
+      this.getBoard();
+    }
+
+    getBoard() {
       this.id = this.route.snapshot.params['id'];
       this.boardService.getBoardById(this.id).subscribe({
         next: (data) => {
@@ -28,6 +35,17 @@ export class BoardDetailsComponent implements OnInit {
           console.log(this.board);
           console.log('Board data fetch completed');
         }
+      });
+    }
+
+    createBList(boardId: number) {
+      this.router.navigate(['create-blist', boardId]);
+    }
+
+    deleteBList(id: number) {
+      this.bListService.deleteBList(id).subscribe(data => {
+        console.log(data.data.bList);
+        this.getBoard();
       });
     }
 }

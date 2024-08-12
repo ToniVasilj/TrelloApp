@@ -10,7 +10,7 @@
       <tr *ngFor = "let board of boards">
           <td> {{ board.name }}</td>
           <td>
-            <button (click)="updateBoardName(board.id)" class=" btn btn-info"> Update Name </button>
+            <button (click)="updateBoard(board.id)" class=" btn btn-info"> Update Name </button>
             <button (click)="deleteBoard(board.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
             <button (click)="boardDetails(board.id)" class="btn btn-info" style="margin-left: 10px"> View </button>
           </td>
