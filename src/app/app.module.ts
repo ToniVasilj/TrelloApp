@@ -12,6 +12,8 @@ import { BoardDetailsComponent } from './board-details/board-details.component';
 import { CreateBListComponent } from './create-b-list/create-b-list.component';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { UpdateCardComponent } from './update-card/update-card.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { UpdateCardComponent } from './update-card/update-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

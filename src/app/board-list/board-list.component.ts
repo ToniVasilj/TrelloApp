@@ -4,44 +4,59 @@ import { BoardService } from '../service/board.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-board-list',
+  selector:    'app-board-list',
   templateUrl: './board-list.component.html',
-  styleUrl: './board-list.component.css'
+  styleUrl:    './board-list.component.css'
 })
 export class BoardListComponent implements OnInit {
 
   boards: Board[];
 
-  constructor(private boardService: BoardService,
+  constructor(
+    private boardService: BoardService,
     private router: Router) {}
+
+  private getBoards() {
+    this.boardService.getBoardsList().subscribe({
+      next: (data) => {
+        this.boards = data.data.boards;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        console.log('Board list fetch completed');
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.getBoards();
-    
   }
 
-  private getBoards() {
-    this.boardService.getBoardsList().subscribe( data => {
-      this.boards = data.data.boards;
-    })
-  }
-
-  boardDetails(id: number) {
+  navigateToBoardDetails(id: number) {
     this.router.navigate(['board-details', id]);
   }
 
-  updateBoard(id: number) {
+  navigateToUpdateBoard(id: number) {
     this.router.navigate(['update-board-name', id]);
-  }
-
-  deleteBoard(id: number) {
-    this.boardService.deleteBoard(id).subscribe(data => {
-      console.log(data.data.board);
-      this.getBoards();
-    });
   }
 
   navigateToCreateBoard() {
     this.router.navigate(['create-board']);
+  }
+
+  deleteBoard(id: number) {
+    this.boardService.deleteBoard(id).subscribe({
+      next: () => {
+        console.log('Board deleted');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        this.getBoards();
+      }
+    });
   }
 }

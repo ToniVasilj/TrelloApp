@@ -9,11 +9,11 @@ import { CreateCardComponent } from './create-card/create-card.component';
 import { UpdateCardComponent } from './update-card/update-card.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'boards', pathMatch: 'full'},
   {path: 'boards', component: BoardListComponent},
   {path: 'create-board', component: CreateBoardComponent},
   {path: 'update-board-name/:id', component: UpdateBoardNameComponent},
-  {path: 'board-details/:id', component: BoardDetailsComponent},
-  {path: '', redirectTo: 'boards', pathMatch: 'full'},
+  {path: 'board-details/:id', component: BoardDetailsComponent},  
   {path: 'create-blist/:boardId', component: CreateBListComponent},
   {path: 'create-card/:boardId/:bListId', component: CreateCardComponent },
   {path: 'update-card/:boardId/:cardId', component: UpdateCardComponent }

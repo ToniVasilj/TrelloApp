@@ -1,13 +1,12 @@
-<div class="col-md-6 offset-md-3">
-  <h3> Update Card</h3>
-  <form (ngSubmit) = "onSubmit()">
-  
-    <div class="form-group">
-      <label>Card Text</label>
-      <input type="text" class="form-control" id="name"
-        [(ngModel)] = "card.text" name="name">
-    </div>
-  
-    <button class="btn btn-success" type="submit">Submit</button>
-  </form>
+<h1 mat-dialog-title>Update Card</h1>
+<div mat-dialog-content>
+  <div class="form-group">
+    <label>Card Text</label>
+    <input type="text" class="form-control" id="name"
+      [(ngModel)] = "card.text" name="name" (keyup.enter)="onUpdate()" (keyup.esc) ="onCancel()">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button (click)="onCancel()" class="btn btn-danger btn-sm">Cancel</button>
+  <button (click)="onUpdate() " class="btn btn-primary btn-sm" style="margin-left: 10px">Update</button>
 </div>

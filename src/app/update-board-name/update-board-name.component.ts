@@ -4,21 +4,23 @@ import { Board } from '../interface/board';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-update-board-name',
+  selector:    'app-update-board-name',
   templateUrl: './update-board-name.component.html',
-  styleUrl: './update-board-name.component.css'
+  styleUrl:    './update-board-name.component.css'
 })
 export class UpdateBoardNameComponent implements OnInit {
-
-  id: number;
   board: Board = new Board();
-  constructor(private boardService: BoardService, 
-    private route: ActivatedRoute, private router: Router) {}
+  id:    number;
 
-  goToBoardList() {
+  constructor(
+    private boardService: BoardService,
+    private route: ActivatedRoute,
+    private router: Router) {}
+
+  private goToBoardList() {
     this.router.navigate(['boards']);
   }
-    
+
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.boardService.getBoardById(this.id).subscribe({

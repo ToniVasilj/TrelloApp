@@ -1,50 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Card } from '../interface/board';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CardService } from '../service/card.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-create-card',
+  selector:    'app-create-card',
   templateUrl: './create-card.component.html',
-  styleUrl: './create-card.component.css'
+  styleUrl:    './create-card.component.css'
 })
-export class CreateCardComponent implements OnInit {
-  card: Card = new Card();
+export class CreateCardComponent {
+  card:    Card = new Card();
   boardId: number;
   bListId: number;
-  
-  constructor(private cardService: CardService,
-    private route: ActivatedRoute,
-    private router: Router) {}
 
-  ngOnInit(): void {
-    this.boardId = this.route.snapshot.params['boardId'];
-    console.log("Board id is:", this.boardId);
-    this.bListId = this.route.snapshot.params['bListId'];
-    console.log("BList id is:", this.bListId);
+  constructor(
+    public dialogRef: MatDialogRef<CreateCardComponent>,
+    private cardService: CardService,
+    private snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: { boardId: number, bListId: number }
+  ) {
+    this.boardId = data.boardId;
+    this.bListId = data.bListId;
   }
 
-  goToBoard() {
-    this.router.navigate(['board-details', this.boardId]);
-  }
-
-  saveCard() {
+  private saveCard() {
     this.cardService.createNewCard(this.boardId, this.bListId, this.card).subscribe({
       next: (data) => {
-        console.log(data.data.card);
+        console.log("Card created");
       },
       error: (error) => {
         console.log(error);
+        this.snackBar.open('Failed to create card, text is empty!', 'Close', {
+          duration: 3000,
+        });
       },
       complete: () => {
-        console.log('BList creation completed');
-        this.goToBoard();
+        this.dialogRef.close();
       }
     });
   }
-  
-  onSubmit() {
+
+  onCreate(): void {
     this.saveCard()
     console.log(this.card);
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 }

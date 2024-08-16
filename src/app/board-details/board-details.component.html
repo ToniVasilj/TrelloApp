@@ -1,10 +1,22 @@
-<div *ngIf="board">
-  <h1>{{ board.name }}</h1>
-</div>
+<div *ngIf="board" class="board-header"
+  style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
 
-<td>
-  <button (click)="createBList(board.id)" class="btn btn-primary" style="margin-right: 10px"> Create List </button>
-</td>
+  <h1 style="margin: 0; font-size: 1.75rem; color: #fff;">
+    Board: {{ board.name }}
+  </h1>
+
+  <button (click)="navigateToCreateBList(board.id)" class="btn btn-light" style="font-weight: 600;">
+    Create List
+  </button>
+</div>
 
 <div *ngIf="board">
   <div class="row">
